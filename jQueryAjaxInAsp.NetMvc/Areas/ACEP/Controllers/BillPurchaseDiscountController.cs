@@ -19,7 +19,8 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/BillPurchaseDiscount
         public async Task<ActionResult> Index()
         {
-            return View(await db.TBL_ACEP_BILL_PURCHASE_DISCOUNT.ToListAsync());
+            var result = await BusinessData.GetPurchaseDiscountList(db).ToListAsync();
+            return View(result);
         }
 
         // GET: ACEP/BillPurchaseDiscount/Details/5

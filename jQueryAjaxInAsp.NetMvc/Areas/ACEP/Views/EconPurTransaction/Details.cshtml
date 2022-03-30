@@ -1,0 +1,187 @@
+﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.Model.TBL_ACEP_ECON_PUR_TRANSACTION
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_ACEP_ECON_PUR_TRANSACTION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OFFICEID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OFFICEID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERIOD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERIOD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUB_CAT_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUB_CAT_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANCTION_LIMIT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISBURSEMENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISBURSEMENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RECOVERY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RECOVERY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OVERDUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OVERDUE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATED_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATED_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATION_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATION_DT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDITED_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDITED_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATED_AT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATED_AT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SYSTEM_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SYSTEM_DT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OPERATION_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OPERATION_STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHORIZATION_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHORIZATION_STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHORIZED_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHORIZED_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHORIZATION_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHORIZATION_DATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TXN_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

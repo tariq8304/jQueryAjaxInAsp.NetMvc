@@ -1,0 +1,166 @@
+﻿@model IEnumerable<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_SEC_TRANSACTION>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OFFICEID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFFICENAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERIOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUB_CAT_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DISBURSEMENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RECOVERY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OVERDUE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATION_DT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDITED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPDATED_AT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SYSTEM_DT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OPERATION_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTHORIZATION_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTHORIZED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTHORIZATION_DATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OFFICEID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OFFICENAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PERIOD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SUB_CAT_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SUB_CAT_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SANCTION_LIMIT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DISBURSEMENT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RECOVERY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DF)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SMA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OVERDUE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CREATED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CREATION_DT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EDITED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UPDATED_AT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SYSTEM_DT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OPERATION_STATUS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AUTHORIZATION_STATUS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AUTHORIZED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AUTHORIZATION_DATE)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.TXN_GUID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.TXN_GUID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.TXN_GUID })
+    </td>
+</tr>
+}
+
+</table>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
@@ -35,5 +36,9 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public  DbSet<TBL_ACEP_REPORTING_CONFIG> TBL_ACEP_REPORTING_CONFIG { get; set; }
         public  DbSet<TBL_RBL_OFFICE_LIST> TBL_RBL_OFFICE_LIST { get; set; }
 
+        internal Task SaveChangesAsync(TBL_ACEP_ECON_PUR_TRANSACTION model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

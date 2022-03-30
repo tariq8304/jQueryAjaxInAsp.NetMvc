@@ -19,7 +19,8 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/EconPurCategory
         public async Task<ActionResult> Index()
         {
-            return View(await db.TBL_ACEP_ECON_PUR_CATEGORY.ToListAsync());
+            var result = await BusinessData.GetEconPurCategoryList(db).ToListAsync();
+            return View(result);
         }
 
         // GET: ACEP/EconPurCategory/Details/5
@@ -48,8 +49,10 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EP_CATEOGRY_ID,EP_CATEOGRY_NAME,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] TBL_ACEP_ECON_PUR_CATEGORY tBL_ACEP_ECON_PUR_CATEGORY)
+        public async Task<ActionResult> Create([Bind(Include = "EP_CATEOGRY_NAME,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] TBL_ACEP_ECON_PUR_CATEGORY tBL_ACEP_ECON_PUR_CATEGORY)
         {
+            int max_cat_id = db.TBL_ACEP_ECON_PUR_CATEGORY.Select(p => p.EP_CATEOGRY_ID).DefaultIfEmpty(0).Max() + 1;
+            tBL_ACEP_ECON_PUR_CATEGORY.EP_CATEOGRY_ID = max_cat_id;
             if (ModelState.IsValid)
             {
                 db.TBL_ACEP_ECON_PUR_CATEGORY.Add(tBL_ACEP_ECON_PUR_CATEGORY);
