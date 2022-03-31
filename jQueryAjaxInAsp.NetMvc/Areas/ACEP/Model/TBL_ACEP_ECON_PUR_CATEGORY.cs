@@ -10,8 +10,8 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Model
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public int EP_CATEOGRY_ID { get; set; }
-		public string EP_CATEOGRY_NAME { get; set; }
+		public int EP_CATEGORY_ID { get; set; }
+		public string EP_CATEGORY_NAME { get; set; }
 		public string CREATED_BY { get; set; }
 		public DateTime? CREATION_DT { get; set; }
 		public string EDITED_BY { get; set; }

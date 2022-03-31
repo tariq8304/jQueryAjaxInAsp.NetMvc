@@ -1,4 +1,4 @@
-﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.Model.TBL_ACEP_ECON_PUR_TRANSACTION
+﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_TRANSACTION
 
 @{
     ViewBag.Title = "Details";
@@ -182,6 +182,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TXN_ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TXN_GUID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

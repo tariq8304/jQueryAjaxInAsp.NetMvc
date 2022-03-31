@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data;
 using jQueryAjaxInAsp.NetMvc.Areas.ACEP.Model;
+using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
@@ -30,12 +31,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_ACEP_BILL_PURCHASE_DISCOUNT tBL_ACEP_BILL_PURCHASE_DISCOUNT = await db.TBL_ACEP_BILL_PURCHASE_DISCOUNT.FindAsync(id);
-            if (tBL_ACEP_BILL_PURCHASE_DISCOUNT == null)
+            //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            var result = await BusinessData.GetPurchaseDiscountDetails(db, id).FirstOrDefaultAsync();
+            if (result == null)
             {
                 return HttpNotFound();
             }
-            return View(tBL_ACEP_BILL_PURCHASE_DISCOUNT);
+            return View(result);
         }
 
         // GET: ACEP/BillPurchaseDiscount/Create
@@ -49,16 +52,34 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "BPD_GUID,OFFICE_ID,PERIOD,BPD_AMOUNT,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] TBL_ACEP_BILL_PURCHASE_DISCOUNT tBL_ACEP_BILL_PURCHASE_DISCOUNT)
+        public async Task<ActionResult> Create([Bind(Include = "BPD_GUID,OFFICE_ID,PERIOD,BPD_AMOUNT,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT obj_vm)
         {
+            obj_vm.BPD_GUID = Guid.NewGuid().ToString();
             if (ModelState.IsValid)
             {
-                db.TBL_ACEP_BILL_PURCHASE_DISCOUNT.Add(tBL_ACEP_BILL_PURCHASE_DISCOUNT);
+                var model = new TBL_ACEP_BILL_PURCHASE_DISCOUNT()
+                {
+                    BPD_GUID = obj_vm.BPD_GUID,
+                    OFFICE_ID = obj_vm.OFFICE_ID,
+                    PERIOD = obj_vm.PERIOD,
+                    BPD_AMOUNT = obj_vm.BPD_AMOUNT,
+                    CREATED_BY = obj_vm.CREATED_BY,
+                    CREATION_DT = obj_vm.CREATION_DT,
+                    EDITED_BY = obj_vm.EDITED_BY,
+                    UPDATED_AT = obj_vm.UPDATED_AT,
+                    SYSTEM_DT = obj_vm.SYSTEM_DT,
+                    OPERATION_STATUS = obj_vm.OPERATION_STATUS,
+                    AUTHORIZATION_STATUS = obj_vm.AUTHORIZATION_STATUS,
+                    AUTHORIZED_BY = obj_vm.AUTHORIZED_BY,
+                    AUTHORIZATION_DATE = obj_vm.AUTHORIZATION_DATE
+                };
+
+                db.TBL_ACEP_BILL_PURCHASE_DISCOUNT.Add(model);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(tBL_ACEP_BILL_PURCHASE_DISCOUNT);
+            return View(obj_vm);
         }
 
         // GET: ACEP/BillPurchaseDiscount/Edit/5
@@ -68,12 +89,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_ACEP_BILL_PURCHASE_DISCOUNT tBL_ACEP_BILL_PURCHASE_DISCOUNT = await db.TBL_ACEP_BILL_PURCHASE_DISCOUNT.FindAsync(id);
-            if (tBL_ACEP_BILL_PURCHASE_DISCOUNT == null)
+            //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            var result = await BusinessData.GetPurchaseDiscountEditList(db, id).FirstOrDefaultAsync();
+            if (result == null)
             {
                 return HttpNotFound();
             }
-            return View(tBL_ACEP_BILL_PURCHASE_DISCOUNT);
+            return View(result);
         }
 
         // POST: ACEP/BillPurchaseDiscount/Edit/5
@@ -81,15 +104,33 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "BPD_GUID,OFFICE_ID,PERIOD,BPD_AMOUNT,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] TBL_ACEP_BILL_PURCHASE_DISCOUNT tBL_ACEP_BILL_PURCHASE_DISCOUNT)
+        public async Task<ActionResult> Edit([Bind(Include = "BPD_GUID,OFFICE_ID,PERIOD,BPD_AMOUNT,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT obj_vm)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tBL_ACEP_BILL_PURCHASE_DISCOUNT).State = EntityState.Modified;
+                var model = new TBL_ACEP_BILL_PURCHASE_DISCOUNT
+                {
+                    BPD_GUID = obj_vm.BPD_GUID,
+                    OFFICE_ID = obj_vm.OFFICE_ID,
+                    PERIOD = obj_vm.PERIOD,
+                    BPD_AMOUNT = obj_vm.BPD_AMOUNT,
+                    CREATED_BY = obj_vm.CREATED_BY,
+                    CREATION_DT = obj_vm.CREATION_DT,
+                    EDITED_BY = obj_vm.EDITED_BY,
+                    UPDATED_AT = obj_vm.UPDATED_AT,
+                    SYSTEM_DT = obj_vm.SYSTEM_DT,
+                    OPERATION_STATUS = obj_vm.OPERATION_STATUS,
+                    AUTHORIZATION_STATUS = obj_vm.AUTHORIZATION_STATUS,
+                    AUTHORIZED_BY = obj_vm.AUTHORIZED_BY,
+                    AUTHORIZATION_DATE = obj_vm.AUTHORIZATION_DATE
+                };
+
+
+                db.Entry(model).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(tBL_ACEP_BILL_PURCHASE_DISCOUNT);
+            return View(obj_vm);
         }
 
         // GET: ACEP/BillPurchaseDiscount/Delete/5
@@ -99,12 +140,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_ACEP_BILL_PURCHASE_DISCOUNT tBL_ACEP_BILL_PURCHASE_DISCOUNT = await db.TBL_ACEP_BILL_PURCHASE_DISCOUNT.FindAsync(id);
-            if (tBL_ACEP_BILL_PURCHASE_DISCOUNT == null)
+            //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            var result = await BusinessData.GetPurchaseDiscountDeleteDetails(db, id).FirstOrDefaultAsync();
+            if (result == null)
             {
                 return HttpNotFound();
             }
-            return View(tBL_ACEP_BILL_PURCHASE_DISCOUNT);
+            return View(result);
         }
 
         // POST: ACEP/BillPurchaseDiscount/Delete/5

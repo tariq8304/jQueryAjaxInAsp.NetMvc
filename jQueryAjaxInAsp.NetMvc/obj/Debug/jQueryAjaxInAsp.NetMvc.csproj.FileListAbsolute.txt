@@ -1,4 +1,3 @@
-E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CoreCompileInputs.cache
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\jQueryAjaxInAsp.NetMvc.dll.config
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\jQueryAjaxInAsp.NetMvc.dll
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\jQueryAjaxInAsp.NetMvc.pdb
@@ -97,6 +96,7 @@ E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInA
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\Newtonsoft.Json.xml
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\Antlr3.Runtime.pdb
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CoreCompileInputs.cache
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CopyComplete
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.dll
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.pdb

@@ -1,4 +1,4 @@
-﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.Model.TBL_ACEP_ECON_PUR_CATEGORY
+﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_CATEGORY
 
 @{
     ViewBag.Title = "Edit";
@@ -16,13 +16,13 @@
         <h4>TBL_ACEP_ECON_PUR_CATEGORY</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.EP_CATEOGRY_ID)
+        @Html.HiddenFor(model => model.EP_CATEGORY_ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EP_CATEOGRY_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EP_CATEGORY_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EP_CATEOGRY_NAME, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EP_CATEOGRY_NAME, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.EP_CATEGORY_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EP_CATEGORY_NAME, "", new { @class = "text-danger" })
             </div>
         </div>
 

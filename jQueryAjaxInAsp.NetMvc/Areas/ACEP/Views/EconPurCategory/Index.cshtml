@@ -13,10 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.EP_CATEOGRY_ID)
+            @Html.DisplayNameFor(model => model.EP_CATEGORY_ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EP_CATEOGRY_NAME)
+            @Html.DisplayNameFor(model => model.EP_CATEGORY_NAME)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CREATED_BY)
@@ -51,10 +51,10 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.EP_CATEOGRY_ID)
+        @Html.DisplayFor(modelItem => item.EP_CATEGORY_ID)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.EP_CATEOGRY_NAME)
+        @Html.DisplayFor(modelItem => item.EP_CATEGORY_NAME)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.CREATED_BY)
@@ -84,9 +84,9 @@
         @Html.DisplayFor(modelItem => item.AUTHORIZATION_DATE)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.EP_CATEOGRY_ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.EP_CATEOGRY_ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.EP_CATEOGRY_ID })
+        @Html.ActionLink("Edit", "Edit", new { id = item.EP_CATEGORY_ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.EP_CATEGORY_ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.EP_CATEGORY_ID })
     </td>
 </tr>
 }

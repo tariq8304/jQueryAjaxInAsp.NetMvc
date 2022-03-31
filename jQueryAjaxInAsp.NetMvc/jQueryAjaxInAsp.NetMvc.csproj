@@ -274,7 +274,6 @@
     <Content Include="Areas\ACEP\Views\EconSecSubCategory\Delete.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecSubCategory\Details.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecSubCategory\Edit.cshtml" />
-    <Content Include="Areas\ACEP\Views\EconSecSubCategory\Index.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecCategory\Create.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecCategory\Delete.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecCategory\Details.cshtml" />
@@ -290,6 +289,7 @@
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Details.cshtml" />
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Edit.cshtml" />
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Index.cshtml" />
+    <Content Include="Areas\ACEP\Views\EconSecSubCategory\Index.cshtml" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>

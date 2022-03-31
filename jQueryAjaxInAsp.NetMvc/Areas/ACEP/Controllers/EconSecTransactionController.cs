@@ -31,12 +31,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_ACEP_ECON_SEC_TRANSACTION tBL_ACEP_ECON_SEC_TRANSACTION = await db.TBL_ACEP_ECON_SEC_TRANSACTION.FindAsync(id);
-            if (tBL_ACEP_ECON_SEC_TRANSACTION == null)
+            //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            var result = await BusinessData.GetEconSecTransactionDetails(db, id).FirstOrDefaultAsync();
+            if (result == null)
             {
                 return HttpNotFound();
             }
-            return View(tBL_ACEP_ECON_SEC_TRANSACTION);
+            return View(result);
         }
 
         // GET: ACEP/EconSecTransaction/Create
@@ -98,12 +100,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_ACEP_ECON_SEC_TRANSACTION tBL_ACEP_ECON_SEC_TRANSACTION = await db.TBL_ACEP_ECON_SEC_TRANSACTION.FindAsync(id);
-            if (tBL_ACEP_ECON_SEC_TRANSACTION == null)
+            //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            var result = await BusinessData.GetEconSecTransactionEditList(db, id).FirstOrDefaultAsync();
+            if (result == null)
             {
                 return HttpNotFound();
             }
-            return View(tBL_ACEP_ECON_SEC_TRANSACTION);
+            return View(result);
         }
 
         // POST: ACEP/EconSecTransaction/Edit/5
@@ -111,15 +115,42 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "TXN_GUID,OFFICEID,PERIOD,SUB_CAT_ID,SANCTION_LIMIT,DISBURSEMENT,RECOVERY,SS,DF,BL,SMA,SD,OVERDUE,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] TBL_ACEP_ECON_SEC_TRANSACTION tBL_ACEP_ECON_SEC_TRANSACTION)
+        public async Task<ActionResult> Edit([Bind(Include = "TXN_GUID,OFFICEID,PERIOD,SUB_CAT_ID,SANCTION_LIMIT,DISBURSEMENT,RECOVERY,SS,DF,BL,SMA,SD,OVERDUE,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] VM_TBL_ACEP_ECON_SEC_TRANSACTION obj_vm)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tBL_ACEP_ECON_SEC_TRANSACTION).State = EntityState.Modified;
+                var model = new TBL_ACEP_ECON_SEC_TRANSACTION
+                {
+                    TXN_GUID = obj_vm.TXN_GUID,
+                    OFFICEID = obj_vm.OFFICEID,
+                    PERIOD = obj_vm.PERIOD,
+                    SUB_CAT_ID = obj_vm.SUB_CAT_ID,
+                    SANCTION_LIMIT = obj_vm.SANCTION_LIMIT,
+                    DISBURSEMENT = obj_vm.DISBURSEMENT,
+                    RECOVERY = obj_vm.RECOVERY,
+                    SS = obj_vm.SS,
+                    DF = obj_vm.DF,
+                    BL = obj_vm.BL,
+                    SMA = obj_vm.SMA,
+                    SD = obj_vm.SD,
+                    OVERDUE = obj_vm.OVERDUE,
+                    CREATED_BY = obj_vm.CREATED_BY,
+                    CREATION_DT = obj_vm.CREATION_DT,
+                    EDITED_BY = obj_vm.EDITED_BY,
+                    UPDATED_AT = obj_vm.UPDATED_AT,
+                    SYSTEM_DT = obj_vm.SYSTEM_DT,
+                    OPERATION_STATUS = obj_vm.OPERATION_STATUS,
+                    AUTHORIZATION_STATUS = obj_vm.AUTHORIZATION_STATUS,
+                    AUTHORIZED_BY = obj_vm.AUTHORIZED_BY,
+                    AUTHORIZATION_DATE = obj_vm.AUTHORIZATION_DATE
+                };
+
+
+                db.Entry(model).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(tBL_ACEP_ECON_SEC_TRANSACTION);
+            return View(obj_vm);
         }
 
         // GET: ACEP/EconSecTransaction/Delete/5
@@ -129,12 +160,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_ACEP_ECON_SEC_TRANSACTION tBL_ACEP_ECON_SEC_TRANSACTION = await db.TBL_ACEP_ECON_SEC_TRANSACTION.FindAsync(id);
-            if (tBL_ACEP_ECON_SEC_TRANSACTION == null)
+            //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            var result = await BusinessData.GetEconSecTransactionDeleteDetails(db, id).FirstOrDefaultAsync();
+            if (result == null)
             {
                 return HttpNotFound();
             }
-            return View(tBL_ACEP_ECON_SEC_TRANSACTION);
+            return View(result);
         }
 
         // POST: ACEP/EconSecTransaction/Delete/5
