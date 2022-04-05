@@ -11,6 +11,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels
         [DisplayName("Category Id")]
         public int ES_CATEGORY_ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Category Name")]
         [DisplayName("Category Name")]
         public string ES_CATEGORY_NAME { get; set; }
 

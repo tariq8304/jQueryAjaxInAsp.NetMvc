@@ -205,5 +205,11 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public async Task<ActionResult> GetEconTranDTList()
+        {
+            var result = await BusinessData.GetEconPurTransactionList(db).ToListAsync();
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
