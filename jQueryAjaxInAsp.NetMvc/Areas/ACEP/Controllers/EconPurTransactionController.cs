@@ -14,6 +14,7 @@ using System.Data.Entity.Validation;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
+    [Authorize]
     public class EconPurTransactionController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();

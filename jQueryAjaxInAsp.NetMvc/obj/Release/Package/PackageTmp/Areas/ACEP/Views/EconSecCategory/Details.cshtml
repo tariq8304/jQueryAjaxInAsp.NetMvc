@@ -1,0 +1,55 @@
+﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_SECTOR_CATEGORY
+
+@{
+    ViewBag.Title = "Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a href="@Url.Action("Index","EconSecCategory",new { area = "acep"})" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-step-backward">Back To List</span>
+    </a> | @ViewBag.Title
+</h3>
+
+<div class="row col-sm-8">
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            <h3 class="panel-title"> Category Details </h3>
+        </div>
+
+        <div class="panel-body">
+            @*<div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ES_CATEGORY_NAME)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ES_CATEGORY_NAME)
+                        </dd>
+                    </dl>
+                </div>*@
+
+
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ES_CATEGORY_NAME)</th>
+                        <td>@Html.DisplayFor(model => model.ES_CATEGORY_NAME)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                <a href="@Url.Action("Edit", "EconSecCategory", new { id = Model.ES_CATEGORY_ID })" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-edit">Edit</span>
+                </a>
+            </p>
+
+
+        </div>
+
+    </div>
+</div>
+

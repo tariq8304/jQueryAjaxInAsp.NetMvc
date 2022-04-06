@@ -12,6 +12,7 @@ using jQueryAjaxInAsp.NetMvc.Areas.ACEP.Model;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
+    [Authorize]
     public class DataEntryStatusController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();

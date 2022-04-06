@@ -1,0 +1,57 @@
+﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_SECTOR_CATEGORY
+
+@{
+    ViewBag.Title = "Edit Economic Sector Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a href="@Url.Action("Index","EconSecCategory",new { area = "acep"})" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-step-backward">Back To List</span>
+    </a> | @ViewBag.Title
+</h3>
+<div class="row col-sm-8">
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Edit Economic Sector Category
+            </h3>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ES_CATEGORY_ID)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ES_CATEGORY_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.ES_CATEGORY_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ES_CATEGORY_NAME, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save">Save</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

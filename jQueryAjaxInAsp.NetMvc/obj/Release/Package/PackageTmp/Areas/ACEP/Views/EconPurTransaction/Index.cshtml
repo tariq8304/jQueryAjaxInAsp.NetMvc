@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Add New Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a href="@Url.Action("Create","EconPurTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-plus">ADD Data</span>
+    </a>
+</h3>
+
+<div class="panel panel-info" style="width: 1300px;">
+
+    <div class="panel-heading">
+        <h3 class="panel-title"> All Transactions(by Economic Purpose) </h3>
+    </div>
+
+    <div class="panel-body">
+        @Html.Partial("_IndexPartial")
+    </div>
+</div>
+
+@*</div>*@
+
+
+@section scripts{
+
+    <!-- Normal -->
+    <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    @* Normal *@
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+    @* jQuery ThemeRoller*@
+    @*<script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>*@
+
+    @* Semantic UI*@
+    @*<script src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>*@
+
+    @* Bootstrap 4*@
+    @*<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet" />
+        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
+
+    <script> 
+
+        $(document).ready(function () {
+
+            var dataTable = $('#myDataTable').DataTable({
+                'processing': true, // for show progress bar
+                'order': [], // disable inital Ordering
+                'language': {
+                    'emptyTable': 'No Data Found!!!!'
+                }
+            });
+        }); 
+
+    </script>
+
+}

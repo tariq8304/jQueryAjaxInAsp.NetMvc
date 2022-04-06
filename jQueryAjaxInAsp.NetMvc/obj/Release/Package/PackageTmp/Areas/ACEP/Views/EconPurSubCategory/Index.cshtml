@@ -1,0 +1,106 @@
+﻿@model IEnumerable<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EP_SUB_CATEGORY_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EP_SUB_CATEGORY_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EP_CATEGORY_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EP_CATEGORY_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATION_DT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDITED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPDATED_AT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SYSTEM_DT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OPERATION_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTHORIZATION_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTHORIZED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTHORIZATION_DATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.EP_SUB_CATEGORY_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EP_SUB_CATEGORY_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EP_CATEGORY_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EP_CATEGORY_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CREATED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CREATION_DT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EDITED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UPDATED_AT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SYSTEM_DT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OPERATION_STATUS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AUTHORIZATION_STATUS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AUTHORIZED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AUTHORIZATION_DATE)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.EP_SUB_CATEGORY_ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.EP_SUB_CATEGORY_ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.EP_SUB_CATEGORY_ID })
+    </td>
+</tr>
+}
+
+</table>

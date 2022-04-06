@@ -290,12 +290,14 @@
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Edit.cshtml" />
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Index.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecSubCategory\Index.cshtml" />
+    <Content Include="Areas\ACEP\Views\EconPurTransaction\_IndexPartial.cshtml" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Oracle.ManagedDataAccess.Client.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\acep_iis_profile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
