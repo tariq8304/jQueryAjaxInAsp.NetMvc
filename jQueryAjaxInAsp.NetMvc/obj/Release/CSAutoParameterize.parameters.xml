@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="DBModel-Web.config Connection String" description="DBModel Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.DBModels.csdl|res://*/Models.DBModels.ssdl|res://*/Models.DBModels.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-10UR3HR\SQLEXPRESS;initial catalog=jQueryAjaxDB;integrated security=False;user id=sa;password=rbl@1234;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="E:\\forwarding\ ICT\ system\\projects\\ASPDotNet\\jQueryAjaxInAsp\.NetMvc\\jQueryAjaxInAsp\.NetMvc\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBModel']/@connectionString" />
-  </parameter>
-  <parameter name="ACEPDBContext-Web.config Connection String" description="ACEPDBContext Connection String used in web.config by the application to access the database." defaultValue="User Id=acep;Password=acep;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.152.10)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE)));" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="E:\\forwarding\ ICT\ system\\projects\\ASPDotNet\\jQueryAjaxInAsp\.NetMvc\\jQueryAjaxInAsp\.NetMvc\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ACEPDBContext']/@connectionString" />
-  </parameter>
-</parameters>

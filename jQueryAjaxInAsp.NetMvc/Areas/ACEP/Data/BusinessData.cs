@@ -12,6 +12,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         {
             var data = from a in db.TBL_ACEP_BILL_PURCHASE_DISCOUNT
                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICE_ID equals b.OFFICEID
+                       orderby a.BPD_GUID
                        select new VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT
                        {
                            BPD_GUID = a.BPD_GUID,
@@ -104,6 +105,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_CATEGORY> GetEconPurCategoryList(ACEPDBContext db)
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_CATEGORY
+                       orderby a.EP_CATEGORY_ID
                        select new VM_TBL_ACEP_ECON_PUR_CATEGORY
                        {
                            EP_CATEGORY_ID = a.EP_CATEGORY_ID,
@@ -125,6 +127,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY
                        join b in db.TBL_ACEP_ECON_PUR_CATEGORY on a.EP_CATEGORY_ID equals b.EP_CATEGORY_ID
+                       orderby a.EP_SUB_CATEGORY_ID ascending
                        select new VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY
                        {
                            EP_SUB_CATEGORY_ID = a.EP_SUB_CATEGORY_ID,
@@ -183,6 +186,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_SECTOR_CATEGORY> GetEconSecCategoryList(ACEPDBContext db)
         {
             var data = from a in db.TBL_ACEP_ECON_SECTOR_CATEGORY
+                       orderby a.ES_CATEGORY_ID
                        select new VM_TBL_ACEP_ECON_SECTOR_CATEGORY
                        {
                            ES_CATEGORY_ID = a.ES_CATEGORY_ID,
@@ -204,6 +208,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY
                        join b in db.TBL_ACEP_ECON_SECTOR_CATEGORY on a.ES_CATEGORY_ID equals b.ES_CATEGORY_ID
+                       orderby a.ES_SUB_CATEGORY_ID
                        select new VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY
                        {
                            ES_SUB_CATEGORY_ID = a.ES_SUB_CATEGORY_ID,
@@ -329,12 +334,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY> GetEconPurSubCategoryDetails(ACEPDBContext db, int id)
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY
+                       join b in db.TBL_ACEP_ECON_PUR_CATEGORY on a.EP_CATEGORY_ID equals b.EP_CATEGORY_ID
                        where (a.EP_SUB_CATEGORY_ID == id)
                        select new VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY
                        {
                            EP_SUB_CATEGORY_ID = a.EP_SUB_CATEGORY_ID,
                            EP_SUB_CATEGORY_NAME = a.EP_SUB_CATEGORY_NAME,
                            EP_CATEGORY_ID = a.EP_CATEGORY_ID,
+                           EP_CATEGORY_Name = b.EP_CATEGORY_NAME,
                            CREATED_BY = a.CREATED_BY,
                            CREATION_DT = a.CREATION_DT,
                            EDITED_BY = a.EDITED_BY,
@@ -373,13 +380,15 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
 
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY> GetEconPurSubCategoryDeleteDetails(ACEPDBContext db, int id)
         {
-            var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY
+          var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY
+                       join b in db.TBL_ACEP_ECON_PUR_CATEGORY on a.EP_CATEGORY_ID equals b.EP_CATEGORY_ID
                        where (a.EP_SUB_CATEGORY_ID == id)
                        select new VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY
                        {
                            EP_SUB_CATEGORY_ID = a.EP_SUB_CATEGORY_ID,
                            EP_SUB_CATEGORY_NAME = a.EP_SUB_CATEGORY_NAME,
                            EP_CATEGORY_ID = a.EP_CATEGORY_ID,
+                           EP_CATEGORY_Name = b.EP_CATEGORY_NAME,
                            CREATED_BY = a.CREATED_BY,
                            CREATION_DT = a.CREATION_DT,
                            EDITED_BY = a.EDITED_BY,
@@ -397,6 +406,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurTransactionDetails(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
+                       join b in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY on a.SUB_CAT_ID equals b.EP_SUB_CATEGORY_ID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
@@ -405,6 +415,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
                            OFFICEID = a.OFFICEID,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
+                           SUB_CAT_NAME = b.EP_SUB_CATEGORY_NAME,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
                            DISBURSEMENT = a.DISBURSEMENT ?? 0,
                            RECOVERY = a.RECOVERY ?? 0,
@@ -562,12 +573,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY> GetEconSecSubCategoryDetails(ACEPDBContext db, int id)
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY
+                       join b in db.TBL_ACEP_ECON_SECTOR_CATEGORY on a.ES_CATEGORY_ID equals b.ES_CATEGORY_ID
                        where (a.ES_SUB_CATEGORY_ID == id)
                        select new VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY
                        {
                            ES_SUB_CATEGORY_ID = a.ES_SUB_CATEGORY_ID,
                            ES_SUB_CATEGORY_NAME = a.ES_SUB_CATEGORY_NAME,
                            ES_CATEGORY_ID = a.ES_CATEGORY_ID,
+                           ES_CATEGORY_NAME = b.ES_CATEGORY_NAME,
                            CREATED_BY = a.CREATED_BY,
                            CREATION_DT = a.CREATION_DT,
                            EDITED_BY = a.EDITED_BY,
@@ -607,12 +620,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY> GetEconSecSubCategoryDeleteDetails(ACEPDBContext db, int id)
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY
+                       join b in db.TBL_ACEP_ECON_SECTOR_CATEGORY on a.ES_CATEGORY_ID equals b.ES_CATEGORY_ID
                        where (a.ES_SUB_CATEGORY_ID == id)
                        select new VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY
                        {
                            ES_SUB_CATEGORY_ID = a.ES_SUB_CATEGORY_ID,
                            ES_SUB_CATEGORY_NAME = a.ES_SUB_CATEGORY_NAME,
                            ES_CATEGORY_ID = a.ES_CATEGORY_ID,
+                           ES_CATEGORY_NAME = b.ES_CATEGORY_NAME,
                            CREATED_BY = a.CREATED_BY,
                            CREATION_DT = a.CREATION_DT,
                            EDITED_BY = a.EDITED_BY,
@@ -630,6 +645,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_SEC_TRANSACTION> GetEconSecTransactionDetails(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
+                       join b in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals b.ES_SUB_CATEGORY_ID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
                        {
@@ -638,6 +654,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
                            OFFICEID = a.OFFICEID,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
+                           SUB_CAT_NAME = b.ES_SUB_CATEGORY_NAME,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
                            DISBURSEMENT = a.DISBURSEMENT ?? 0,
                            RECOVERY = a.RECOVERY ?? 0,
@@ -697,6 +714,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_SEC_TRANSACTION> GetEconSecTransactionDeleteDetails(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
+                       join b in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals b.ES_SUB_CATEGORY_ID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
                        {
@@ -704,6 +722,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
                            OFFICEID = a.OFFICEID,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
+                           SUB_CAT_NAME = b.ES_SUB_CATEGORY_NAME,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
                            DISBURSEMENT = a.DISBURSEMENT ?? 0,
                            RECOVERY = a.RECOVERY ?? 0,
@@ -724,6 +743,79 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
                            AUTHORIZATION_DATE = a.AUTHORIZATION_DATE
                        };
             return data;
+        }
+
+        public static List<DropDownEconPurCategory> GetEconPurDropDownCategorylist (ACEPDBContext db)
+        {
+            List<DropDownEconPurCategory> result = new List<DropDownEconPurCategory>();
+            var obj = db.TBL_ACEP_ECON_PUR_CATEGORY.Select(u => u).ToList();
+            if(obj != null && obj.Count()>0)
+            {
+                foreach(var data in obj)
+                {
+                    DropDownEconPurCategory model = new DropDownEconPurCategory();
+                    model.EP_CATEGORY_ID = data.EP_CATEGORY_ID;
+                    model.EP_CATEGORY_Name = data.EP_CATEGORY_NAME;
+                    result.Add(model);
+                }
+            }
+                       
+            return result;
+        }
+
+        public static List<DropDownEconPurSubCategory> GetEconPurDropDownSubCategorylist(ACEPDBContext db)
+        {
+            List<DropDownEconPurSubCategory> result = new List<DropDownEconPurSubCategory>();
+            var obj = db.TBL_ACEP_ECON_PUR_SUB_CATEGORY.Select(u => u).ToList();
+            if (obj != null && obj.Count() > 0)
+            {
+                foreach (var data in obj)
+                {
+                    DropDownEconPurSubCategory model = new DropDownEconPurSubCategory();
+                    model.EP_SUB_CATEGORY_ID = data.EP_SUB_CATEGORY_ID;
+                    model.EP_SUB_CATEGORY_NAME = data.EP_SUB_CATEGORY_NAME;
+                    result.Add(model);
+                }
+            }
+
+            return result;
+        }
+
+
+        public static List<DropDownEconSecCategory> GetEconSecDropDownCategorylist(ACEPDBContext db)
+        {
+            List<DropDownEconSecCategory> result = new List<DropDownEconSecCategory>();
+            var obj = db.TBL_ACEP_ECON_SECTOR_CATEGORY.Select(u => u).ToList();
+            if (obj != null && obj.Count() > 0)
+            {
+                foreach (var data in obj)
+                {
+                    DropDownEconSecCategory model = new DropDownEconSecCategory();
+                    model.ES_CATEGORY_ID = data.ES_CATEGORY_ID;
+                    model.ES_CATEGORY_NAME = data.ES_CATEGORY_NAME;
+                    result.Add(model);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<DropDownEconSecSubCategory> GetEconSecDropDownSubCategorylist(ACEPDBContext db)
+        {
+            List<DropDownEconSecSubCategory> result = new List<DropDownEconSecSubCategory>();
+            var obj = db.TBL_ACEP_ECON_SEC_SUB_CATEGORY.Select(u => u).ToList();
+            if (obj != null && obj.Count() > 0)
+            {
+                foreach (var data in obj)
+                {
+                    DropDownEconSecSubCategory model = new DropDownEconSecSubCategory();
+                    model.ES_SUB_CATEGORY_ID = data.ES_SUB_CATEGORY_ID;
+                    model.ES_SUB_CATEGORY_NAME = data.ES_SUB_CATEGORY_NAME;
+                    result.Add(model);
+                }
+            }
+
+            return result;
         }
     }
 

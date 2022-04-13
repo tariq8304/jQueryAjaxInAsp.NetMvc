@@ -14,7 +14,6 @@ using System.Data.Entity.Validation;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
-    [Authorize]
     public class EconPurTransactionController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();
@@ -46,6 +45,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/EconPurTransaction/Create
         public ActionResult Create()
         {
+            ViewBag.SubCategoryDropDown = new SelectList(BusinessData.GetEconPurDropDownSubCategorylist(db).ToList(), "EP_SUB_CATEGORY_ID", "EP_SUB_CATEGORY_NAME");
             return View();
         }
 
@@ -118,6 +118,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+            ViewBag.SubCategoryDropDown = new SelectList(BusinessData.GetEconPurDropDownSubCategorylist(db).ToList(), "EP_SUB_CATEGORY_ID", "EP_SUB_CATEGORY_NAME");
 
             var result = await BusinessData.GetEconPurTransactionEditList(db, id).FirstOrDefaultAsync();
             if (result == null)

@@ -13,7 +13,6 @@ using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
-    [Authorize]
     public class BillPurchaseDiscountController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();

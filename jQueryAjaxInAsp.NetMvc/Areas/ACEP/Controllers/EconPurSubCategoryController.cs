@@ -13,7 +13,6 @@ using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
-    [Authorize]
     public class EconPurSubCategoryController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();
@@ -46,7 +45,9 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/EconPurSubCategory/Create
         public ActionResult Create()
         {
-            return View();
+            VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY model = new VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY();
+            model.DropDownEconPurCategoryList = BusinessData.GetEconPurDropDownCategorylist(db).ToList();
+            return View(model);
         }
 
         // POST: ACEP/EconPurSubCategory/Create
@@ -93,6 +94,17 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            //List<category> cat = _business.ViewAllcat().ToList();
+            //List<Books> book = _business.ViewAllBooks().ToList();
+            //return View(new MyViewModel() { Cats = cat, Books = book);
+            //VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY dropdwonmodel = new VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY();
+            //model.DropDownEconPurCategoryList = BusinessData.GetEconPurDropDownCategorylist(db).ToList();
+            //dropdwonmodel.DropDownEconPurCategoryList = BusinessData.GetEconPurDropDownCategorylist(db).ToList();
+
+            ViewBag.categoryDropDown = new SelectList(BusinessData.GetEconPurDropDownCategorylist(db).ToList(), "EP_CATEGORY_ID", "EP_CATEGORY_Name");
+
+
+
             //TBL_ACEP_ECON_PUR_SUB_CATEGORY tBL_ACEP_ECON_PUR_SUB_CATEGORY = await db.TBL_ACEP_ECON_PUR_SUB_CATEGORY.FindAsync(id);
 
             var result = await BusinessData.GetEconPurSubCategoryEditList(db, id).FirstOrDefaultAsync();
@@ -101,6 +113,9 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
                 return HttpNotFound();
             }
             return View(result);
+
+
+
         }
 
         // POST: ACEP/EconPurSubCategory/Edit/5
@@ -114,9 +129,9 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             {
                 var model = new TBL_ACEP_ECON_PUR_SUB_CATEGORY
                 {
-                     EP_SUB_CATEGORY_ID = obj_vm_sub_cat.EP_SUB_CATEGORY_ID,
-                     EP_SUB_CATEGORY_NAME = obj_vm_sub_cat.EP_SUB_CATEGORY_NAME,
-                     EP_CATEGORY_ID = obj_vm_sub_cat.EP_CATEGORY_ID,
+                    EP_SUB_CATEGORY_ID = obj_vm_sub_cat.EP_SUB_CATEGORY_ID,
+                    EP_SUB_CATEGORY_NAME = obj_vm_sub_cat.EP_SUB_CATEGORY_NAME,
+                    EP_CATEGORY_ID = obj_vm_sub_cat.EP_CATEGORY_ID,
                     CREATED_BY = obj_vm_sub_cat.CREATED_BY,
                     CREATION_DT = obj_vm_sub_cat.CREATION_DT,
                     EDITED_BY = obj_vm_sub_cat.EDITED_BY,

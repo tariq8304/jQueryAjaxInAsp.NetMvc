@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ACEP</title>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />*@
@@ -22,12 +22,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("ES Category", "Index", "ACEP/EconSecCategory")</li>
-                    <li>@Html.ActionLink("ES Sub Category", "Index", "ACEP/EconSecSubCategory")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("EP Category", "Index", "EconPurCategory", new { area = "ACEP" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("EP Sub-Category", "Index", "EconPurSubCategory", new { area = "ACEP" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("EP Transction", "Index", "EconPurTransaction", new { area = "ACEP" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("ES Category", "Index", "EconSecCategory", new { area = "ACEP" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("ES Sub-Category", "Index", "EconSecSubCategory", new { area = "ACEP" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("ES Transction", "Index", "EconSecTransaction", new { area = "ACEP" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("BPD", "Index", "BillPurchaseDiscount", new { area = "ACEP" }, new { @class = "" })</li>
                 </ul>
-                </div>
+            </div>
         </div>
     </div>
     <div class="container body-content">

@@ -13,7 +13,6 @@ using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
-    [Authorize]
     public class EconSecTransactionController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();
@@ -45,6 +44,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/EconSecTransaction/Create
         public ActionResult Create()
         {
+            ViewBag.SubCategoryDropDown = new SelectList(BusinessData.GetEconSecDropDownSubCategorylist(db).ToList(), "ES_SUB_CATEGORY_ID", "ES_SUB_CATEGORY_NAME");
             return View();
         }
 
@@ -57,20 +57,20 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         {
             //tBL_ACEP_ECON_SEC_TRANSACTION.TXN_GUID = Guid.NewGuid().ToString();
 
-            obj_vm.TXN_GUID = Guid.NewGuid().ToString();           
+            obj_vm.TXN_GUID = Guid.NewGuid().ToString();
             if (ModelState.IsValid)
             {
                 var model = new TBL_ACEP_ECON_SEC_TRANSACTION()
-                { 
-                     TXN_GUID = obj_vm.TXN_GUID,
-                     OFFICEID = obj_vm.OFFICEID,
-                     PERIOD = obj_vm.PERIOD,
-                     SUB_CAT_ID = obj_vm.SUB_CAT_ID,
-                     SANCTION_LIMIT = obj_vm.SANCTION_LIMIT,
-                     DISBURSEMENT = obj_vm.DISBURSEMENT,
-                     RECOVERY = obj_vm.RECOVERY,
-                     SS = obj_vm.SS,
-                     DF = obj_vm.DF,
+                {
+                    TXN_GUID = obj_vm.TXN_GUID,
+                    OFFICEID = obj_vm.OFFICEID,
+                    PERIOD = obj_vm.PERIOD,
+                    SUB_CAT_ID = obj_vm.SUB_CAT_ID,
+                    SANCTION_LIMIT = obj_vm.SANCTION_LIMIT,
+                    DISBURSEMENT = obj_vm.DISBURSEMENT,
+                    RECOVERY = obj_vm.RECOVERY,
+                    SS = obj_vm.SS,
+                    DF = obj_vm.DF,
                     BL = obj_vm.BL,
                     SMA = obj_vm.SMA,
                     SD = obj_vm.SD,
@@ -102,6 +102,8 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //TBL_ACEP_ECON_PUR_TRANSACTION tBL_ACEP_ECON_PUR_TRANSACTION = await db.TBL_ACEP_ECON_PUR_TRANSACTION.FindAsync(id);
+
+            ViewBag.SubCategoryDropDown = new SelectList(BusinessData.GetEconSecDropDownSubCategorylist(db).ToList(), "ES_SUB_CATEGORY_ID", "ES_SUB_CATEGORY_NAME");
 
             var result = await BusinessData.GetEconSecTransactionEditList(db, id).FirstOrDefaultAsync();
             if (result == null)

@@ -13,7 +13,6 @@ using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
-    [Authorize]
     public class EconPurCategoryController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();
@@ -53,7 +52,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EP_CATEOGRY_NAME,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] VM_TBL_ACEP_ECON_PUR_CATEGORY obj_vm_cat)
+        public async Task<ActionResult> Create([Bind(Include = "EP_CATEGORY_NAME,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] VM_TBL_ACEP_ECON_PUR_CATEGORY obj_vm_cat)
         {
             int max_cat_id = db.TBL_ACEP_ECON_PUR_CATEGORY.Select(p => p.EP_CATEGORY_ID).DefaultIfEmpty(0).Max() + 1;
             obj_vm_cat.EP_CATEGORY_ID = max_cat_id;

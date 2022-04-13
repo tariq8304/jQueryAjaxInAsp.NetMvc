@@ -12,15 +12,15 @@
 </h3>
 
 
-@*<div class="row col-sm-20">
+<div class="row col-sm-12">
     <div class="panel panel-info">
 
         <div class="panel-heading">
             <h3 class="panel-title"> All Transactions </h3>
         </div>
 
-        <div class="panel-body">*@
-            <table id="employeeTable" class="display">
+        <div class="panel-body">
+            <table id="employeeTable" class="table responsive">
 
                 <thead>
                     <tr>
@@ -136,13 +136,14 @@
                     }*@
 
             </table>
-        @*</div>
+        </div>
     </div>
-</div>*@
+</div>
 
 
 <!-- Normal -->
-<link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+@*<link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+<link href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css" rel="stylesheet" />
 
 @section scripts{
     @* Normal *@
@@ -166,13 +167,14 @@
             // e.g. /Date(1538377200000)/ to 10/1/2018
 
             const dateValue = new Date(parseInt(data.substr(6)));
-            return dateValue.toLocaleDateString();
+            return dateValue.toLocaleDateString('en-GB');
         }
 
         $(document).ready(function () {
 
             $("#employeeTable").DataTable(
                 {
+                    responsive: true,
                     "ajax": {
                         "url": "/EconSecTransaction/GetEconTranDTList",
                         "type": "GET",
@@ -214,17 +216,17 @@
                         },*@
                         {
                             "data": "TXN_GUID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconSecTransaction/Edit/' + data + '">Edit</a>';
+                                return '<a href="/ACEP/EconSecTransaction/Edit/' + data + '" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit">Edit</a>';
                             }
                         },
                         {
                             "data": "TXN_GUID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconSecTransaction/Details/' + data + '">Details</a>';
+                                return '<a href="/ACEP/EconSecTransaction/Details/' + data + '" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open">Details</a>';
                             }
                         },
                         {
                             "data": "TXN_GUID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconSecTransaction/Delete/' + data + '">Delete</a>';
+                                return '<a href="/ACEP/EconSecTransaction/Delete/' + data + '" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash">Delete</a>';
                             }
                         }
 

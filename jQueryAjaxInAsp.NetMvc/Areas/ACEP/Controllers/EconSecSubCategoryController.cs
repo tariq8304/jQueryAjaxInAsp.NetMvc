@@ -13,7 +13,6 @@ using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 
 namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 {
-    [Authorize]
     public class EconSecSubCategoryController : Controller
     {
         private ACEPDBContext db = new ACEPDBContext();
@@ -46,6 +45,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/EconSecSubCategory/Create
         public ActionResult Create()
         {
+            ViewBag.categoryDropDown = new SelectList(BusinessData.GetEconSecDropDownCategorylist(db).ToList(), "ES_CATEGORY_ID", "ES_CATEGORY_NAME");
             return View();
         }
 
@@ -94,6 +94,8 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             }
 
             //TBL_ACEP_ECON_PUR_SUB_CATEGORY tBL_ACEP_ECON_PUR_SUB_CATEGORY = await db.TBL_ACEP_ECON_PUR_SUB_CATEGORY.FindAsync(id);
+
+            ViewBag.categoryDropDown = new SelectList(BusinessData.GetEconSecDropDownCategorylist(db).ToList(), "ES_CATEGORY_ID", "ES_CATEGORY_NAME");
 
             var result = await BusinessData.GetEconSecSubCategoryEditList(db, id).FirstOrDefaultAsync();
             if (result == null)

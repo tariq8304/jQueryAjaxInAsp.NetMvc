@@ -1,0 +1,247 @@
+﻿@model IEnumerable<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_TRANSACTION>
+
+@{ ViewBag.Title = "Add New Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h3>
+    <a href="@Url.Action("Create","EconPurTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-plus">ADD Data</span>
+    </a>
+</h3>
+
+
+@*<table class="table">*@
+@*<div class="container">*@
+
+<div class="row col-sm-12">
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            <h3 class="panel-title"> All Transactions </h3>
+        </div>
+
+        <div class="panel-body">
+            <table id="employeeTable" class="table responsive" cellspacing="0" width="100%">
+
+                <thead>
+                    <tr>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.TXN_GUID)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.OFFICEID)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.OFFICENAME)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.PERIOD)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.SUB_CAT_ID)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DISBURSEMENT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RECOVERY)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DF)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BL)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SMA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OVERDUE)
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @*<tbody>
+
+                    </tbody>*@
+
+                @*@foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TXN_GUID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OFFICEID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OFFICENAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERIOD)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SUB_CAT_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SUB_CAT_NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SANCTION_LIMIT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DISBURSEMENT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RECOVERY)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DF)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SMA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SD)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OVERDUE)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.TXN_GUID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.TXN_GUID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.TXN_GUID })
+                            </td>
+                        </tr>
+                    }*@
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@*</div>*@
+
+
+
+<!-- Normal -->
+@*<link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+<link href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css" rel="stylesheet"/>
+
+@section scripts{
+    @* Normal *@
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+    @* jQuery ThemeRoller*@
+    @*<script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>*@
+
+    @* Semantic UI*@
+    @*<script src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>*@
+
+    @* Bootstrap 4*@
+    @*<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet" />
+        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
+
+    <script>
+
+    function convertJsonDateToShortDate(data) {
+        // This function converts a json date to a short date
+        // e.g. /Date(1538377200000)/ to 10/1/2018
+
+        const dateValue = new Date(parseInt(data.substr(6)));
+        return dateValue.toLocaleDateString();
+    }
+
+        $(document).ready(function () {
+
+
+            $("#employeeTable").DataTable(
+                {
+                    
+
+                    "ajax": {
+                        "url": "/EconPurTransaction/GetEconTranDTList",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                         //{ "data": "TXN_GUID" },
+                        //{ "data": "OFFICEID" },
+                        //{ "data": "OFFICENAME" },
+                        //{ "data": "PERIOD" },
+                        {
+                            data: "PERIOD",
+                            render: function (data) {
+                                //This formats json dates as shortdates in the table
+                                return convertJsonDateToShortDate(data);
+                            }
+                        },
+                        //{ "data": "SUB_CAT_ID" },
+                        { "data": "SUB_CAT_NAME" },
+                        { "data": "SANCTION_LIMIT" },
+                        { "data": "DISBURSEMENT" },
+                        { "data": "RECOVERY" },
+                        { "data": "SS" },
+                        { "data": "DF" },
+                        { "data": "BL" },
+                        { "data": "SMA" },
+                        { "data": "SD" },
+                        { "data": "OVERDUE" },
+
+                         @*{
+                            "render": function (data, type, full, meta) {
+                                var selected_user_value = full.TXN_GUID;
+                                var link = '@Html.ActionLink("Edit", "Edit", "EconPurTransaction", new { area = "", id = "selected_user" },null)';
+                                link = link.replace("selected_user", selected_user_value);
+                                return link;
+                            }
+                        },*@
+                        {
+                            "data": "TXN_GUID", "width": "50px", "render": function (data) {
+                                return '<a href="/ACEP/EconPurTransaction/Edit/' + data + '" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit">Edit</a>';
+                            }
+                        },
+                        {
+                            "data": "TXN_GUID", "width": "50px", "render": function (data) {
+                                return '<a href="/ACEP/EconPurTransaction/Details/' + data + '" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open">Details</a>';
+                            }
+                        },
+                        {
+                            "data": "TXN_GUID", "width": "50px", "render": function (data) {
+                                return '<a href="/ACEP/EconPurTransaction/Delete/' + data + '" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash">Delete</a>';
+                            }
+                        }
+
+
+                    ]
+
+                });
+
+        });
+
+    </script>
+
+}

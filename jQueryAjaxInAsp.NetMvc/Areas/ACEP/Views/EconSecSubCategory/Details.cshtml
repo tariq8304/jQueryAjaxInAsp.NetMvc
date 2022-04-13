@@ -1,107 +1,77 @@
 ﻿@model jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY
 
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Economic Sector Sub-Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Details</h2>
+<h3>
+    <a href="@Url.Action("Index","EconSecSubCategory",new { area = "acep"})" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-step-backward">Back To List</span>
+    </a> | @ViewBag.Title
+</h3>
 
-<div>
-    <h4>TBL_ACEP_ECON_SEC_SUB_CATEGORY</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ES_SUB_CATEGORY_NAME)
-        </dt>
+<div class="row col-sm-8">
+    <div class="panel panel-info">
 
-        <dd>
-            @Html.DisplayFor(model => model.ES_SUB_CATEGORY_NAME)
-        </dd>
+        <div class="panel-heading">
+            <h3 class="panel-title"> Sub-Category Details </h3>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ES_CATEGORY_ID)
-        </dt>
+        <div class="panel-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.ES_CATEGORY_ID)
-        </dd>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ES_SUB_CATEGORY_NAME)</th>
+                        <td>@Html.DisplayFor(model => model.ES_SUB_CATEGORY_NAME)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ES_CATEGORY_NAME)</th>
+                        <td>@Html.DisplayFor(model => model.ES_CATEGORY_NAME)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CREATED_BY)</th>
+                        <td>@Html.DisplayFor(model => model.CREATED_BY)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CREATION_DT)</th>
+                        <td>@Html.DisplayFor(model => model.CREATION_DT)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.EDITED_BY)</th>
+                        <td>@Html.DisplayFor(model => model.EDITED_BY)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.UPDATED_AT)</th>
+                        <td>@Html.DisplayFor(model => model.UPDATED_AT)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.SYSTEM_DT)</th>
+                        <td>@Html.DisplayFor(model => model.SYSTEM_DT)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.OPERATION_STATUS)</th>
+                        <td>@Html.DisplayFor(model => model.OPERATION_STATUS)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.AUTHORIZATION_STATUS)</th>
+                        <td>@Html.DisplayFor(model => model.AUTHORIZATION_STATUS)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.AUTHORIZED_BY)</th>
+                        <td>@Html.DisplayFor(model => model.AUTHORIZED_BY)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.AUTHORIZATION_DATE)</th>
+                        <td>@Html.DisplayFor(model => model.AUTHORIZATION_DATE)</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CREATED_BY)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CREATED_BY)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CREATION_DT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CREATION_DT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EDITED_BY)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EDITED_BY)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UPDATED_AT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UPDATED_AT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SYSTEM_DT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SYSTEM_DT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OPERATION_STATUS)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OPERATION_STATUS)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AUTHORIZATION_STATUS)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AUTHORIZATION_STATUS)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AUTHORIZED_BY)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AUTHORIZED_BY)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AUTHORIZATION_DATE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AUTHORIZATION_DATE)
-        </dd>
-
-    </dl>
+            <p>
+                <a href="@Url.Action("Edit", "EconSecSubCategory", new { id = Model.ES_SUB_CATEGORY_ID })" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-edit">Edit</span>
+                </a>
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ES_SUB_CATEGORY_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

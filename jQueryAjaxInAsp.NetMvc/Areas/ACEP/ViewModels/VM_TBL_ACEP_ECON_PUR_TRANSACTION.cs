@@ -16,9 +16,11 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels
 		public string OFFICENAME { get; set; }
 
 		[DisplayName("Reporting Date")]
-		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-		public DateTime? PERIOD { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? PERIOD { get; set; }
 
+		[Required(ErrorMessage = "Please enter Sub-Category")]
 		public int? SUB_CAT_ID { get; set; }
 
 		[DisplayName("Sub Category Name")]
