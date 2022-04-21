@@ -42,16 +42,13 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             return View(result);
         }
 
-        // GET: ACEP/EconPurTransaction/Create
+        #region Create
         public ActionResult Create()
         {
             ViewBag.SubCategoryDropDown = new SelectList(BusinessData.GetEconPurDropDownSubCategorylist(db).ToList(), "EP_SUB_CATEGORY_ID", "EP_SUB_CATEGORY_NAME");
             return View();
         }
 
-        // POST: ACEP/EconPurTransaction/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "OFFICEID,PERIOD,SUB_CAT_ID,SANCTION_LIMIT,DISBURSEMENT,RECOVERY,SS,DF,BL,SMA,SD,OVERDUE,CREATED_BY,CREATION_DT,EDITED_BY,UPDATED_AT,SYSTEM_DT,OPERATION_STATUS,AUTHORIZATION_STATUS,AUTHORIZED_BY,AUTHORIZATION_DATE")] VM_TBL_ACEP_ECON_PUR_TRANSACTION obj_vm)
@@ -109,6 +106,75 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
 
             return View(obj_vm);
         }
+        #endregion
+
+
+        #region Create Multiple
+        public async Task<ActionResult> CreateMultiple()
+        {
+            var obj = await BusinessData.GetEconomicPurposeSubCategoryList(db).ToListAsync();
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateMultiple(List<VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE> obj_vm)
+        {
+            foreach (VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE mr in obj_vm)
+            {
+                mr.TXN_GUID = Guid.NewGuid().ToString();
+                    //db.TBL_ACEP_ECON_PUR_TRANSACTION.Add(tBL_ACEP_ECON_PUR_TRANSACTION);
+
+                    var model = new TBL_ACEP_ECON_PUR_TRANSACTION
+                    {
+                        TXN_GUID = mr.TXN_GUID,
+                        OFFICEID = mr.OFFICEID,
+                        PERIOD = mr.PERIOD,
+                        SUB_CAT_ID = mr.SUB_CAT_ID,
+                        SANCTION_LIMIT = mr.SANCTION_LIMIT,
+                        DISBURSEMENT = mr.DISBURSEMENT,
+                        RECOVERY = mr.RECOVERY,
+                        SS = mr.SS,
+                        DF = mr.DF,
+                        BL = mr.BL,
+                        SMA = mr.SMA,
+                        SD = mr.SD,
+                        OVERDUE = mr.OVERDUE,
+                        CREATED_BY = mr.CREATED_BY,
+                        CREATION_DT = mr.CREATION_DT,
+                        EDITED_BY = mr.EDITED_BY,
+                        UPDATED_AT = mr.UPDATED_AT,
+                        SYSTEM_DT = mr.SYSTEM_DT,
+                        OPERATION_STATUS = mr.OPERATION_STATUS,
+                        AUTHORIZATION_STATUS = mr.AUTHORIZATION_STATUS,
+                        AUTHORIZED_BY = mr.AUTHORIZED_BY,
+                         AUTHORIZATION_DATE = mr.AUTHORIZATION_DATE
+                    };
+                    db.TBL_ACEP_ECON_PUR_TRANSACTION.Add(model);
+                    await db.SaveChangesAsync();
+
+                //await db.SaveChangesAsync();
+                //try
+                //{
+                //    await db.SaveChangesAsync();
+                //}
+
+                //catch(DbEntityValidationException e)
+                //{
+                //    Console.WriteLine(e);
+                //}
+
+                
+            }
+
+            return RedirectToAction("Index");
+            //return View(obj_vm);
+
+        }
+        #endregion
+
+
+
 
         // GET: ACEP/EconPurTransaction/Edit/5
         public async Task<ActionResult> Edit(string id)

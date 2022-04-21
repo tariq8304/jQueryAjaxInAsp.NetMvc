@@ -178,6 +178,7 @@
     <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_DATA_ENTRY_STATUS.cs" />
     <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_ECON_PUR_CATEGORY.cs" />
     <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_ECON_PUR_SUB_CATEGORY.cs" />
+    <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE.cs" />
     <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_ECON_PUR_TRANSACTION.cs" />
     <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_ECON_SECTOR_CATEGORY.cs" />
     <Compile Include="Areas\ACEP\ViewModels\VM_TBL_ACEP_ECON_SEC_SUB_CATEGORY.cs" />
@@ -331,6 +332,7 @@
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Edit.cshtml" />
     <Content Include="Areas\ACEP\Views\DataEntryStatus\Index.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecSubCategory\Index.cshtml" />
+    <Content Include="Areas\ACEP\Views\EconPurTransaction\CreateMultiple.cshtml" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>

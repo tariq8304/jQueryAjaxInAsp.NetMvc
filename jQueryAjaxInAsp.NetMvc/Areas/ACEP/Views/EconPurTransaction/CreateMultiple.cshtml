@@ -1,0 +1,207 @@
+﻿@*@model IEnumerable<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE>*@
+@model List<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE>
+
+@{ ViewBag.Title = "Add New Economic Purpose Data";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h3>
+    <a href="@Url.Action("Index","EconPurTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-step-backward">Back To List</span>
+    </a> | @ViewBag.Title
+</h3>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <table class="table table-bordered table-hover" id="tab_logic">
+                    @*<thead>
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.OFFICEID)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.PERIOD)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.SUB_CAT_ID)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.DISBURSEMENT)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.RECOVERY)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.SS)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.DF)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.BL)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.SMA)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.SD)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.OVERDUE)
+                </th>
+            </tr>
+        </thead>*@
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                BranchCode
+                            </th>
+                            <th class="text-center">
+                                PERIOD
+                            </th>
+                            <th class="text-center">
+                                Sub Category ID DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                Sub Category Name DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                Sanction Limit DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                RECOVERY DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                SS DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                DF DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                BL DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                SMA DISBURSEMENT
+                            </th> 
+                            <th class="text-center">
+                                SD DISBURSEMENT
+                            </th>
+                            <th class="text-center">
+                                OVERDUE DISBURSEMENT
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr id='addr0'>
+                                <td>
+                                    @Html.EditorFor(model => model[i].OFFICEID, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].OFFICEID, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].PERIOD, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].PERIOD, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].SUB_CAT_ID, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].SUB_CAT_ID, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].SUB_CAT_NAME, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].SUB_CAT_NAME, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].SANCTION_LIMIT, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].SANCTION_LIMIT, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].DISBURSEMENT, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].DISBURSEMENT, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].RECOVERY, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].RECOVERY, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].SS, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].SS, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].DF, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].DF, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].BL, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].BL, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].SMA, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].SMA, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].SD, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].SD, "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model[i].OVERDUE, new { htmlAttributes = new { @class = "form-control", @display = "display" } })
+                                    @Html.ValidationMessageFor(model => model[i].OVERDUE, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        }
+                        @*<tr id='addr1'></tr>*@
+                        <tr>
+                            <td colspan="4">
+                                <input type="submit" value="Submit" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button id="add_row" class="btn btn-default pull-left">Add Row</button><button id='delete_row' class="pull-right btn btn-default">Delete Row</button>
+    </div>
+}
+
+
+@*</div>
+        </div>
+    </div>*@
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script src="~/Scripts/jquery-ui-1.13.1.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $(".datepicker").datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changemonth: true,
+                    changeyear: true
+                });
+            });
+        </script>
+    }*@
+
+

@@ -817,6 +817,18 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
 
             return result;
         }
+
+        public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE> GetEconomicPurposeSubCategoryList(ACEPDBContext db)
+        {
+            var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY
+                       select new VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE
+                       {
+                           SUB_CAT_ID = a.EP_SUB_CATEGORY_ID,
+                           SUB_CAT_NAME = a.EP_SUB_CATEGORY_NAME
+                       };
+
+            return data;
+        }
     }
 
 }
