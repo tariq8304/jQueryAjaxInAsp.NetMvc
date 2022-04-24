@@ -112,7 +112,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         #region Create Multiple
         public async Task<ActionResult> CreateMultiple()
         {
-            var obj = await BusinessData.GetEconomicPurposeSubCategoryList(db).ToListAsync();
+            var obj = await BusinessData.GetEconPurSubCategoryMultipleEntryList(db).ToListAsync();
             return View(obj);
         }
 

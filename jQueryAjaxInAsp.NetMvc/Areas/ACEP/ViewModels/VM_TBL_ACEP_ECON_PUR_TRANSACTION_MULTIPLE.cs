@@ -70,11 +70,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels
         [Required(ErrorMessage = "Please enter Overdue Amount")]
         [Range(0, double.MaxValue, ErrorMessage = "The Special Overdue Amount {0} must be greater than {1}.")]
         [DisplayName("Overdue")]
-        public decimal OVERDUE { get; set; }
-
-
-
-      
+        public decimal OVERDUE { get; set; }      
 
     }
 }
