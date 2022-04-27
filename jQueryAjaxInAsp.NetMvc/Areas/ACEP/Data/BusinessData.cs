@@ -820,9 +820,13 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
 
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE> GetEconPurSubCategoryMultipleEntryList(ACEPDBContext db)
         {
-            var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY orderby a.EP_SUB_CATEGORY_ID
+            var data = from a in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY
+                       join b in db.TBL_ACEP_ECON_PUR_CATEGORY on a.EP_CATEGORY_ID equals b.EP_CATEGORY_ID
+                       orderby a.EP_CATEGORY_ID, a.EP_SUB_CATEGORY_ID
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION_MULTIPLE
                        {
+                           EP_CATEGORY_ID = a.EP_CATEGORY_ID,
+                           EP_CATEGORY_NAME = b.EP_CATEGORY_NAME,
                            SUB_CAT_ID = a.EP_SUB_CATEGORY_ID,
                            SUB_CAT_NAME = a.EP_SUB_CATEGORY_NAME
                        };
@@ -842,6 +846,24 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
                        };
 
             return data;
+        }
+
+        public static List<DropDownEconPurCategory> GetEconPurCategoryMultipleInput(ACEPDBContext db)
+        {
+            List<DropDownEconPurCategory> result = new List<DropDownEconPurCategory>();
+            var obj = db.TBL_ACEP_ECON_PUR_CATEGORY.Select(u => u).ToList();
+            if (obj != null && obj.Count() > 0)
+            {
+                foreach (var data in obj)
+                {
+                    DropDownEconPurCategory model = new DropDownEconPurCategory();
+                    model.EP_CATEGORY_ID = data.EP_CATEGORY_ID;
+                    model.EP_CATEGORY_Name = data.EP_CATEGORY_NAME;
+                    result.Add(model);
+                }
+            }
+
+            return result;
         }
 
 

@@ -112,6 +112,8 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         #region Create Multiple
         public async Task<ActionResult> CreateMultiple()
         {
+            ViewBag.CategoryDropDownMultiple = BusinessData.GetEconPurCategoryMultipleInput(db).OrderBy(x => x.EP_CATEGORY_ID).ToList();
+            
             var obj = await BusinessData.GetEconPurSubCategoryMultipleEntryList(db).ToListAsync();
             return View(obj);
         }

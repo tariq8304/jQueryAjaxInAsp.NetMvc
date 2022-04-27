@@ -34,7 +34,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels
 
     public class DropDownEconPurCategory
     {
-        public int EP_CATEGORY_ID { get; set; }
+        public int? EP_CATEGORY_ID { get; set; }
         public string EP_CATEGORY_Name { get; set; }
     }
 

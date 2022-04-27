@@ -101,6 +101,8 @@ E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInA
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CopyComplete
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.dll
 E:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.pdb
+G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.AssemblyReference.cache
+G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CoreCompileInputs.cache
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\jQueryAjaxInAsp.NetMvc.dll.config
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\jQueryAjaxInAsp.NetMvc.dll
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\jQueryAjaxInAsp.NetMvc.pdb
@@ -199,8 +201,6 @@ G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjax
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\Newtonsoft.Json.xml
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\Antlr3.Runtime.pdb
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CoreCompileInputs.cache
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CopyComplete
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.dll
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.pdb
-G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.AssemblyReference.cache
