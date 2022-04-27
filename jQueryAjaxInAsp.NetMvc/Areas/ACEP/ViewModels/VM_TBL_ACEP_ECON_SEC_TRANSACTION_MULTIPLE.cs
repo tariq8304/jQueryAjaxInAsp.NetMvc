@@ -28,6 +28,12 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels
 		[DisplayName("Sub Category Name")]
 		public string SUB_CAT_NAME { get; set; }
 
+		[DisplayName("Category Id")]
+		public int? ES_CATEGORY_ID { get; set; }
+
+		[DisplayName("Category Name")]
+		public string ES_CATEGORY_NAME { get; set; }
+
 		[Required(ErrorMessage = "Please enter Sanction Limit Amount")]
 		[Range(1, double.MaxValue, ErrorMessage = "The Sanction Limit Amount {0} must be greater than {1}.")]
 		[DisplayName("Sanction Limit")]
