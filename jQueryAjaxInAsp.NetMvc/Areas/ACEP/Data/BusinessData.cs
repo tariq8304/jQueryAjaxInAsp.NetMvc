@@ -152,6 +152,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
                        join c in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY on a.SUB_CAT_ID equals c.EP_SUB_CATEGORY_ID
                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                       orderby a.SUB_CAT_ID ascending
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
 
@@ -234,6 +235,7 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
             var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
                        join c in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals c.ES_SUB_CATEGORY_ID
                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                       orderby a.SUB_CAT_ID ascending
                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
                        {
 
