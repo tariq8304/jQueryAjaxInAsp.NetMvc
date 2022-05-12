@@ -21,6 +21,12 @@
             <table class="table">
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.OFFICE_NAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PERIOD)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.BPD_AMOUNT)
                     </th>
                     <th></th>
@@ -28,22 +34,28 @@
 
                 @foreach (var item in Model)
                 {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BPD_AMOUNT)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", "BillPurchaseDiscount", new { id = item.BPD_GUID })" class="btn btn-primary btn-sm">
-                <span class="glyphicon glyphicon-edit">Edit</span>
-            </a>
-            <a href="@Url.Action("Details", "BillPurchaseDiscount", new { id = item.BPD_GUID })" class="btn btn-success btn-sm">
-                <span class="glyphicon glyphicon-eye-open">Details</span>
-            </a>
-            <a href="@Url.Action("Delete", "BillPurchaseDiscount", new { id = item.BPD_GUID })" class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-trash">Delete</span>
-            </a>
-        </td>
-    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OFFICE_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PERIOD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BPD_AMOUNT)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "BillPurchaseDiscount", new { id = item.BPD_GUID })" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-edit">Edit</span>
+                    </a>
+                    <a href="@Url.Action("Details", "BillPurchaseDiscount", new { id = item.BPD_GUID })" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-eye-open">Details</span>
+                    </a>
+                    <a href="@Url.Action("Delete", "BillPurchaseDiscount", new { id = item.BPD_GUID })" class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-trash">Delete</span>
+                    </a>
+                </td>
+            </tr>
 }
 
             </table>

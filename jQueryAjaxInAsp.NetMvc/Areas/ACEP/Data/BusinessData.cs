@@ -36,11 +36,13 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT> GetPurchaseDiscountDetails(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_BILL_PURCHASE_DISCOUNT
+                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICE_ID equals b.OFFICEID
                        where (a.BPD_GUID == id)
                        select new VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT
                        {
                            BPD_GUID = a.BPD_GUID,
                            OFFICE_ID = a.OFFICE_ID,
+                           OFFICE_NAME = b.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            BPD_AMOUNT = a.BPD_AMOUNT,
                            CREATED_BY = a.CREATED_BY,
@@ -83,11 +85,13 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT> GetPurchaseDiscountDeleteDetails(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_BILL_PURCHASE_DISCOUNT
+                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICE_ID equals b.OFFICEID
                        where (a.BPD_GUID == id)
                        select new VM_TBL_ACEP_BILL_PURCHASE_DISCOUNT
                        {
                            BPD_GUID = a.BPD_GUID,
                            OFFICE_ID = a.OFFICE_ID,
+                           OFFICE_NAME = b.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            BPD_AMOUNT = a.BPD_AMOUNT,
                            CREATED_BY = a.CREATED_BY,
@@ -409,12 +413,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
                        join b in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY on a.SUB_CAT_ID equals b.EP_SUB_CATEGORY_ID
+                       join c in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals c.OFFICEID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
 
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
+                           OFFICENAME = c.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
                            SUB_CAT_NAME = b.EP_SUB_CATEGORY_NAME,
@@ -444,11 +450,13 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurTransactionEditList(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
+                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
+                           OFFICENAME = b.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
@@ -477,13 +485,17 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurTransactionDeleteDetails(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
+                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                       join c in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY on a.SUB_CAT_ID equals c.EP_SUB_CATEGORY_ID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
+                           OFFICENAME = b.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
+                           SUB_CAT_NAME = c.EP_SUB_CATEGORY_NAME,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
                            DISBURSEMENT = a.DISBURSEMENT ?? 0,
                            RECOVERY = a.RECOVERY ?? 0,
@@ -648,12 +660,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
                        join b in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals b.ES_SUB_CATEGORY_ID
+                       join c in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals c.OFFICEID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
                        {
 
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
+                           OFFICENAME = c.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
                            SUB_CAT_NAME = b.ES_SUB_CATEGORY_NAME,
@@ -683,11 +697,13 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         public static IQueryable<VM_TBL_ACEP_ECON_SEC_TRANSACTION> GetEconSecTransactionEditList(ACEPDBContext db, string id)
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
+                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
                        {
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
+                           OFFICENAME = b.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
@@ -717,12 +733,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         {
             var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
                        join b in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals b.ES_SUB_CATEGORY_ID
+                       join c in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals c.OFFICEID
                        where (a.TXN_GUID == id)
                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
                        {
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
                            PERIOD = a.PERIOD,
+                           OFFICENAME = c.RBL_OFFICENAME,
                            SUB_CAT_ID = a.SUB_CAT_ID,
                            SUB_CAT_NAME = b.ES_SUB_CATEGORY_NAME,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,

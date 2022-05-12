@@ -19,7 +19,7 @@
         <div class="panel-body">
             @using (Html.BeginForm())
             {
-@Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -47,6 +47,14 @@
                                 @Html.ValidationMessageFor(model => model.PERIOD, "", new { @class = "text-danger" })
                             </div>
                         </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PERIOD, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.PERIOD, new { htmlAttributes = new { @class = "datepicker form-control" } })
+
+                            @Html.ValidationMessageFor(model => model.PERIOD, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.BPD_AMOUNT, htmlAttributes: new { @class = "control-label col-md-4" })
@@ -68,7 +76,18 @@
     </div>
 </div>
 
-
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.13.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changemonth: true,
+                changeyear: true
+            });
+        });
+    </script>
 }

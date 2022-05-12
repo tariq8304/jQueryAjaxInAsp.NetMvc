@@ -24,122 +24,124 @@
         </div>
 
         <div class="panel-body">
-            <table id="employeeTable" class="table responsive">
+            <div class="col-md-12 column table-responsive">
+                <table id="employeeTable" class="table responsive">
 
-                <thead>
-                    <tr>
-                        @*<th>
-                                @Html.DisplayNameFor(model => model.TXN_GUID)
-                            </th>*@
-                        @*<th>
-                                @Html.DisplayNameFor(model => model.OFFICEID)
-                            </th>*@
-                        @*<th>
-                                @Html.DisplayNameFor(model => model.OFFICENAME)
-                            </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => model.PERIOD)
-                        </th>
-                        @*<th>
-                                @Html.DisplayNameFor(model => model.SUB_CAT_ID)
-                            </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DISBURSEMENT)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.RECOVERY)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SS)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DF)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.BL)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SMA)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SD)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.OVERDUE)
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-
-                @*@foreach (var item in Model)
-                    {
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TXN_GUID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.OFFICEID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.OFFICENAME)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PERIOD)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SUB_CAT_ID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SUB_CAT_NAME)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SANCTION_LIMIT)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DISBURSEMENT)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.RECOVERY)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SS)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DF)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.BL)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SMA)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SD)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.OVERDUE)
-                            </td>
-
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.TXN_GUID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.TXN_GUID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.TXN_GUID })
-                            </td>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.TXN_GUID)
+                                </th>*@
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.OFFICEID)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.OFFICENAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PERIOD)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.SUB_CAT_ID)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DISBURSEMENT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RECOVERY)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SS)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DF)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BL)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SMA)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SD)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OVERDUE)
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
                         </tr>
-                    }*@
+                    </thead>
 
-            </table>
+                    @*@foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TXN_GUID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OFFICEID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OFFICENAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PERIOD)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SUB_CAT_ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SUB_CAT_NAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SANCTION_LIMIT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DISBURSEMENT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RECOVERY)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SS)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DF)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BL)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SMA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SD)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OVERDUE)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.TXN_GUID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.TXN_GUID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.TXN_GUID })
+                                </td>
+                            </tr>
+                        }*@
+
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -187,7 +189,7 @@
                     "columns": [
                          //{ "data": "TXN_GUID" },
                         //{ "data": "OFFICEID" },
-                        //{ "data": "OFFICENAME" },
+                        { "data": "OFFICENAME" },
                         //{
                         //    "data": "PERIOD"
                         //},
