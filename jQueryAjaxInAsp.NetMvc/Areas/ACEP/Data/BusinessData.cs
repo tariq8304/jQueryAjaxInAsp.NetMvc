@@ -153,15 +153,33 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
 
         public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurTransactionList(ACEPDBContext db)
         {
+            var data = (from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
+                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                        //orderby a.PERIOD descending
+                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
+                        {
+
+                            OFFICEID = a.OFFICEID,
+                            RBL_BRANCHCODE = b.RBL_BRANCHCODE,
+                            OFFICENAME = b.RBL_OFFICENAME,
+                            PERIOD = a.PERIOD,
+                        }).Distinct();
+            return data;
+        }
+
+        public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurBrTransactionList(ACEPDBContext db,int? id)
+        {
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
                        join c in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY on a.SUB_CAT_ID equals c.EP_SUB_CATEGORY_ID
                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                       where (b.OFFICEID == id)
                        orderby a.SUB_CAT_ID ascending
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
 
                            TXN_GUID = a.TXN_GUID,
                            OFFICEID = a.OFFICEID,
+                           RBL_BRANCHCODE = b.RBL_BRANCHCODE,
                            OFFICENAME = b.RBL_OFFICENAME,
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
