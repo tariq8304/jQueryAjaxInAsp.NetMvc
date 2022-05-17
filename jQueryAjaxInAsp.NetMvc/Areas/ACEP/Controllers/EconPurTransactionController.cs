@@ -26,13 +26,14 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             return View();
         }
 
-        public async Task<ActionResult> BranchTrDetails(int? id)
+        public async Task<ActionResult> BranchTrDetails(int? officeid, string period)
         {
             //string officeid;
             //officeid= id;
             //var result = await BusinessData.GetEconPurBrTransactionList(db).ToListAsync();
             //return View(result);
-            ViewBag.officeid = id;
+            ViewBag.officeid = officeid;
+            ViewBag.esdate = period;
             return View();
         }
 
@@ -293,9 +294,9 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<ActionResult> GetEconBrTranDTList(int id)
+        public async Task<ActionResult> GetEconBrTranDTList(int officeid, string esdate)
         {
-            var result = await BusinessData.GetEconPurBrTransactionList(db, id).ToListAsync();
+            var result = await BusinessData.GetEconPurBrTransactionList(db, officeid, esdate).ToListAsync();
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
     }

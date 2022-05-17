@@ -1,13 +1,13 @@
-﻿@model IEnumerable<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_PUR_TRANSACTION>
+﻿@model IEnumerable<jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels.VM_TBL_ACEP_ECON_SEC_TRANSACTION>
 
 @{ ViewBag.Title = "Add New Transaction";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h3>
-    <a href="@Url.Action("Create","EconPurTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
+    <a href="@Url.Action("Create","EconSecTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
         <span class="glyphicon glyphicon-plus">ADD Data</span>
     </a>
-    <a href="@Url.Action("CreateMultiple","EconPurTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
+    <a href="@Url.Action("CreateMultiple","EconSecTransaction",new { area = "acep"})" class="btn btn-info btn-sm">
         <span class="glyphicon glyphicon-plus">ADD Multiple Data</span>
     </a>
 </h3>
@@ -20,7 +20,7 @@
     <div class="panel panel-info">
 
         <div class="panel-heading">
-            <h3 class="panel-title"> All Economic Purpose Transactions </h3>
+            <h3 class="panel-title"> All Economic Sector Transactions </h3>
         </div>
 
         <div class="panel-body">
@@ -171,7 +171,7 @@
     @*<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet" />
         <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
 
-<script>
+    <script>
 
     function convertJsonDateToShortDate(data) {
         // This function converts a json date to a short date
@@ -188,7 +188,7 @@
                 {
                     responsive: true,
                     "ajax": {
-                        "url": "/EconPurTransaction/GetEconBrTranDTList/?OFFICEID=@ViewBag.officeid&esdate=@ViewBag.esdate",
+                        "url": "/EconSecTransaction/GetEconBrTranDTList/?OFFICEID=@ViewBag.officeid&esdate=@ViewBag.esdate",
                         "type": "GET",
                         "datatype": "json"
                     },
@@ -227,17 +227,17 @@
                         },*@
                         {
                             "data": "TXN_GUID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconPurTransaction/Edit/' + data + '" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit">Edit</a>';
+                                return '<a href="/ACEP/EconSecTransaction/Edit/' + data + '" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit">Edit</a>';
                             }
                         },
                         {
                             "data": "TXN_GUID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconPurTransaction/Details/' + data + '" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open">Details</a>';
+                                return '<a href="/ACEP/EconSecTransaction/Details/' + data + '" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open">Details</a>';
                             }
                         },
                         {
                             "data": "TXN_GUID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconPurTransaction/Delete/' + data + '" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash">Delete</a>';
+                                return '<a href="/ACEP/EconSecTransaction/Delete/' + data + '" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash">Delete</a>';
                             }
                         }
 
@@ -248,6 +248,6 @@
 
         });
 
-</script>
+    </script>
 
 }

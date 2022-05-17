@@ -30,11 +30,11 @@
                     <thead>
                         <tr>
                             @*<th>
-            @Html.DisplayNameFor(model => model.TXN_GUID)
-        </th>*@
+                                    @Html.DisplayNameFor(model => model.TXN_GUID)
+                                </th>*@
                             @*<th>
-            @Html.DisplayNameFor(model => model.OFFICEID)
-        </th>*@
+                                    @Html.DisplayNameFor(model => model.OFFICEID)
+                                </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.RBL_BRANCHCODE)
                             </th>
@@ -45,38 +45,38 @@
                                 @Html.DisplayNameFor(model => model.PERIOD)
                             </th>
                             @*<th>
-            @Html.DisplayNameFor(model => model.SUB_CAT_ID)
-        </th>*@
+                                    @Html.DisplayNameFor(model => model.SUB_CAT_ID)
+                                </th>*@
                             @*<th>
-            @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DISBURSEMENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RECOVERY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SMA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OVERDUE)
-        </th>*@
+                                    @Html.DisplayNameFor(model => model.SUB_CAT_NAME)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SANCTION_LIMIT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DISBURSEMENT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RECOVERY)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SS)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DF)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.BL)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SMA)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SD)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OVERDUE)
+                                </th>*@
                             <th></th>
                             <th></th>
                             <th></th>
@@ -231,8 +231,8 @@
                             }
                         },
                         {
-                            "data": "OFFICEID", "width": "50px", "render": function (data) {
-                                return '<a href="/ACEP/EconPurTransaction/BranchTrDetails/' + data + '" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open">Details</a>';
+                            "data": {  }, "width": "50px", "render": function (data) {
+                                return '<a href="/ACEP/EconPurTransaction/BranchTrDetails/?' + 'OFFICEID=' + data.OFFICEID + "&PERIOD=" + convertJsonDateToShortDate(data.PERIOD) + '" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open">Details</a>';
                             }
                         },
                         {

@@ -1,6 +1,7 @@
 ﻿using jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -167,12 +168,16 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
             return data;
         }
 
-        public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurBrTransactionList(ACEPDBContext db,int? id)
+        public static IQueryable<VM_TBL_ACEP_ECON_PUR_TRANSACTION> GetEconPurBrTransactionList(ACEPDBContext db, int officeid, string esdate)
         {
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            // It throws Argument null exception  
+            DateTime desperiod = DateTime.ParseExact(esdate, "dd/MM/yyyy", provider);
+
             var data = from a in db.TBL_ACEP_ECON_PUR_TRANSACTION
                        join c in db.TBL_ACEP_ECON_PUR_SUB_CATEGORY on a.SUB_CAT_ID equals c.EP_SUB_CATEGORY_ID
                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
-                       where (b.OFFICEID == id)
+                       where (b.OFFICEID == officeid && a.PERIOD == desperiod)
                        orderby a.SUB_CAT_ID ascending
                        select new VM_TBL_ACEP_ECON_PUR_TRANSACTION
                        {
@@ -184,6 +189,50 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
                            PERIOD = a.PERIOD,
                            SUB_CAT_ID = a.SUB_CAT_ID,
                            SUB_CAT_NAME = c.EP_SUB_CATEGORY_NAME,
+                           SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
+                           DISBURSEMENT = a.DISBURSEMENT ?? 0,
+                           RECOVERY = a.RECOVERY ?? 0,
+                           SS = a.SS ?? 0,
+                           DF = a.DF ?? 0,
+                           BL = a.BL ?? 0,
+                           SMA = a.SMA ?? 0,
+                           SD = a.SD ?? 0,
+                           OVERDUE = a.OVERDUE ?? 0,
+                           CREATED_BY = a.CREATED_BY,
+                           CREATION_DT = a.CREATION_DT,
+                           EDITED_BY = a.EDITED_BY,
+                           UPDATED_AT = a.UPDATED_AT,
+                           SYSTEM_DT = a.SYSTEM_DT,
+                           OPERATION_STATUS = a.OPERATION_STATUS,
+                           AUTHORIZATION_STATUS = a.AUTHORIZATION_STATUS,
+                           AUTHORIZED_BY = a.AUTHORIZED_BY,
+                           AUTHORIZATION_DATE = a.AUTHORIZATION_DATE
+                       };
+            return data;
+        }
+
+
+        public static IQueryable<VM_TBL_ACEP_ECON_SEC_TRANSACTION> GetEconSecBrTransactionList(ACEPDBContext db, int officeid, string esdate)
+        {
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            // It throws Argument null exception  
+            DateTime desperiod = DateTime.ParseExact(esdate, "dd/MM/yyyy", provider);
+
+            var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
+                       join c in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals c.ES_SUB_CATEGORY_ID
+                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                       where (b.OFFICEID == officeid && a.PERIOD == desperiod)
+                       orderby a.SUB_CAT_ID ascending
+                       select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
+                       {
+
+                           TXN_GUID = a.TXN_GUID,
+                           OFFICEID = a.OFFICEID,
+                           RBL_BRANCHCODE = b.RBL_BRANCHCODE,
+                           OFFICENAME = b.RBL_OFFICENAME,
+                           PERIOD = a.PERIOD,
+                           SUB_CAT_ID = a.SUB_CAT_ID,
+                           SUB_CAT_NAME = c.ES_SUB_CATEGORY_NAME,
                            SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
                            DISBURSEMENT = a.DISBURSEMENT ?? 0,
                            RECOVERY = a.RECOVERY ?? 0,
@@ -252,40 +301,56 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Data
         }
 
 
+        //public static IQueryable<VM_TBL_ACEP_ECON_SEC_TRANSACTION> GetEconSecTransactionList(ACEPDBContext db)
+        //{
+        //    var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
+        //               join c in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals c.ES_SUB_CATEGORY_ID
+        //               join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+        //               orderby a.SUB_CAT_ID ascending
+        //               select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
+        //               {
+
+        //                   TXN_GUID = a.TXN_GUID,
+        //                   OFFICEID = a.OFFICEID,
+        //                   OFFICENAME = b.RBL_OFFICENAME,
+        //                   PERIOD = a.PERIOD,
+        //                   SUB_CAT_ID = a.SUB_CAT_ID,
+        //                   SUB_CAT_NAME = c.ES_SUB_CATEGORY_NAME,
+        //                   SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
+        //                   DISBURSEMENT = a.DISBURSEMENT ?? 0,
+        //                   RECOVERY = a.RECOVERY ?? 0,
+        //                   SS = a.SS ?? 0,
+        //                   DF = a.DF ?? 0,
+        //                   BL = a.BL ?? 0,
+        //                   SMA = a.SMA ?? 0,
+        //                   SD = a.SD ?? 0,
+        //                   OVERDUE = a.OVERDUE ?? 0,
+        //                   CREATED_BY = a.CREATED_BY,
+        //                   CREATION_DT = a.CREATION_DT,
+        //                   EDITED_BY = a.EDITED_BY,
+        //                   UPDATED_AT = a.UPDATED_AT,
+        //                   SYSTEM_DT = a.SYSTEM_DT,
+        //                   OPERATION_STATUS = a.OPERATION_STATUS,
+        //                   AUTHORIZATION_STATUS = a.AUTHORIZATION_STATUS,
+        //                   AUTHORIZED_BY = a.AUTHORIZED_BY,
+        //                   AUTHORIZATION_DATE = a.AUTHORIZATION_DATE
+        //               };
+        //    return data;
+        //}
+
         public static IQueryable<VM_TBL_ACEP_ECON_SEC_TRANSACTION> GetEconSecTransactionList(ACEPDBContext db)
         {
-            var data = from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
-                       join c in db.TBL_ACEP_ECON_SEC_SUB_CATEGORY on a.SUB_CAT_ID equals c.ES_SUB_CATEGORY_ID
-                       join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
-                       orderby a.SUB_CAT_ID ascending
-                       select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
-                       {
+            var data = (from a in db.TBL_ACEP_ECON_SEC_TRANSACTION
+                        join b in db.TBL_RBL_OFFICE_LIST on a.OFFICEID equals b.OFFICEID
+                        //orderby a.PERIOD descending
+                        select new VM_TBL_ACEP_ECON_SEC_TRANSACTION
+                        {
 
-                           TXN_GUID = a.TXN_GUID,
-                           OFFICEID = a.OFFICEID,
-                           OFFICENAME = b.RBL_OFFICENAME,
-                           PERIOD = a.PERIOD,
-                           SUB_CAT_ID = a.SUB_CAT_ID,
-                           SUB_CAT_NAME = c.ES_SUB_CATEGORY_NAME,
-                           SANCTION_LIMIT = a.SANCTION_LIMIT ?? 0,
-                           DISBURSEMENT = a.DISBURSEMENT ?? 0,
-                           RECOVERY = a.RECOVERY ?? 0,
-                           SS = a.SS ?? 0,
-                           DF = a.DF ?? 0,
-                           BL = a.BL ?? 0,
-                           SMA = a.SMA ?? 0,
-                           SD = a.SD ?? 0,
-                           OVERDUE = a.OVERDUE ?? 0,
-                           CREATED_BY = a.CREATED_BY,
-                           CREATION_DT = a.CREATION_DT,
-                           EDITED_BY = a.EDITED_BY,
-                           UPDATED_AT = a.UPDATED_AT,
-                           SYSTEM_DT = a.SYSTEM_DT,
-                           OPERATION_STATUS = a.OPERATION_STATUS,
-                           AUTHORIZATION_STATUS = a.AUTHORIZATION_STATUS,
-                           AUTHORIZED_BY = a.AUTHORIZED_BY,
-                           AUTHORIZATION_DATE = a.AUTHORIZATION_DATE
-                       };
+                            OFFICEID = a.OFFICEID,
+                            RBL_BRANCHCODE = b.RBL_BRANCHCODE,
+                            OFFICENAME = b.RBL_OFFICENAME,
+                            PERIOD = a.PERIOD,
+                        }).Distinct();
             return data;
         }
 

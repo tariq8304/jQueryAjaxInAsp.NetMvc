@@ -15,6 +15,9 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.ViewModels
 		[DisplayName("Office ID")]
 		public int? OFFICEID { get; set; }
 
+		[DisplayName("Branch Code")]
+		public string RBL_BRANCHCODE { get; set; }
+
 		[DisplayName("Office Name")]
 		public string OFFICENAME { get; set; }
 

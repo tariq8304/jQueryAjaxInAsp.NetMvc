@@ -336,6 +336,7 @@
     <Content Include="Areas\ACEP\Views\EconPurTransaction\CreateMultiple.cshtml" />
     <Content Include="Areas\ACEP\Views\EconSecTransaction\CreateMultiple.cshtml" />
     <Content Include="Areas\ACEP\Views\EconPurTransaction\BranchTrDetails.cshtml" />
+    <Content Include="Areas\ACEP\Views\EconSecTransaction\BranchTrDetails.cshtml" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>

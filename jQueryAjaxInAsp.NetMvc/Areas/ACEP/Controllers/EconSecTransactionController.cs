@@ -20,8 +20,20 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         // GET: ACEP/EconSecTransaction
         public async Task<ActionResult> Index()
         {
-            var result = await BusinessData.GetEconSecTransactionList(db).ToListAsync();
-            return View(result);
+            //var result = await BusinessData.GetEconSecTransactionList(db).ToListAsync();
+            //return View(result);
+            return View();
+        }
+
+        public async Task<ActionResult> BranchTrDetails(int? officeid, string period)
+        {
+            //string officeid;
+            //officeid= id;
+            //var result = await BusinessData.GetEconPurBrTransactionList(db).ToListAsync();
+            //return View(result);
+            ViewBag.officeid = officeid;
+            ViewBag.esdate = period;
+            return View();
         }
 
         // GET: ACEP/EconSecTransaction/Details/5
@@ -262,6 +274,12 @@ namespace jQueryAjaxInAsp.NetMvc.Areas.ACEP.Controllers
         public async Task<ActionResult> GetEconTranDTList()
         {
             var result = await BusinessData.GetEconSecTransactionList(db).ToListAsync();
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<ActionResult> GetEconBrTranDTList(int officeid, string esdate)
+        {
+            var result = await BusinessData.GetEconSecBrTransactionList(db, officeid, esdate).ToListAsync();
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
     }

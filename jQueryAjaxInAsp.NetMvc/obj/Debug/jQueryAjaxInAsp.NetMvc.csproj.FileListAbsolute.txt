@@ -203,3 +203,4 @@ G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjax
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.CopyComplete
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.dll
 G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.pdb
+G:\forwarding ICT system\projects\ASPDotNet\jQueryAjaxInAsp.NetMvcSSD\jQueryAjaxInAsp.NetMvc\jQueryAjaxInAsp.NetMvc\obj\Debug\jQueryAjaxInAsp.NetMvc.csproj.AssemblyReference.cache
